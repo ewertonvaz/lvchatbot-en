@@ -1,4 +1,6 @@
 <?php
+putenv('GOOGLE_CLOUD_PROJECT=weather-ieisyc');
+putenv('GOOGLE_APPLICATION_CREDENTIALS='.base_path('config/key/weather-ieisyc-47f43f24d6b6.json'));
 
 return [
 
