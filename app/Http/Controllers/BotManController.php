@@ -16,9 +16,9 @@ class BotManController extends Controller
     public function handle()
     {
         $botman = app('botman');
-        $botman->fallback(function($bot) {
+/*         $botman->fallback(function($bot) {
             $bot->reply( $this->fallBackResponse());
-        });
+        }); */
         $botman->listen();
     }
 

@@ -66,5 +66,16 @@
         </div>
     </div>
 </div>
+    <script>
+        var botmanWidget = {
+            title: 'Laravel chatbot with Botman',
+            introMessage: "Hello, I'm your Virtual Assistant, be welcome. 🙂<br>I'm here to help you and I understand the following commands: <br><strong>start conversation</strong><br><strong>choose color</strong><br>Or if you just wanna chat, send me a <strong>Hello</strong>!",
+            bubbleAvatarUrl: '/img/bot-logo.png',
+            placeholderText: 'Type your command...',
+            mainColor: 'lightblue',
+            bubbleBackground: 'lightblue',
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
 </body>
 </html>

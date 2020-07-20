@@ -17,11 +17,15 @@ $botman->hears('Start conversation', BotManController::class.'@startConversation
     $bot->reply('Hi! 👋');
 }); */
 
-$botman->hears('(Hey|Hello|Salute)', function ($bot, $greeting) {
+/* $botman->hears('(Hey|Hello|Salute)', function ($bot, $greeting) {
     $bot->reply($greeting.' for you too! 👋');
+}); */
+
+$botman->hears(trans('chatbot.in-salute'), function ($bot, $greeting) {
+    $bot->reply($greeting.trans('chatbot.out-salute')); 
 });
 
-$botman->hears('Menu', BotManController::class.'@startConversation');
+$botman->hears('conversation', BotManController::class.'@startConversation');
 
 //$botman->hears('choose color', BotManController::class.'@firstConversation');
 $botman->hears('.*color$', BotManController::class.'@firstConversation');
@@ -42,11 +46,16 @@ $botman->hears('(^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$)', function ($bo
     $bot->reply('Got it, I will send the message to your e-mail address : ' . $email);
 });
 
-$botman->hears('botman.agent.menu', function ($bot) {
+/* $botman->hears('botman.agent.menu', function ($bot) {
     $extras = $bot->getMessage()->getExtras();
     $apiReply = $extras['apiReply'];
     $apiAction = $extras['apiAction'];
     $apiIntent = $extras['apiIntent'];
     
     $bot->reply($apiReply);
-})->middleware($dialogflow);
+})->middleware($dialogflow); */
+
+$botman->fallback(function($bot) {
+    return $bot->reply($bot->getMessage()->getExtras('apiReply'));
+    //return $bot->reply($bot->getMessage()->getExtras('apiIntent'));
+});
